@@ -1,0 +1,268 @@
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Компас карантина</title> 
+    <!-- <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">   -->
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&family=Manrope:wght@500&display=swap" rel="stylesheet">
+    <style>
+        @keyframes spin {
+            100% {
+            transform: rotate(360deg);
+            }
+        }
+
+        .rotation {
+            animation: spin 40s linear infinite;
+        }
+
+            body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .content {
+            background-color: black;
+            color: #c8c8c8;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .main-page {
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .main-question {
+            width: 30%;
+            padding-bottom: 30px;
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: 8px;
+            text-transform: lowercase;
+            font-size: 64px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .button {
+            position: absolute;
+            color: crimson;
+            border: 3px solid crimson;
+            border-radius: 50%;
+            background-color: black;
+            font-size: 28px;
+            line-height: 40px;
+            width: 235px;
+            height: 170px;
+            font-family: 'Istok Web', sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            transition: background-color 1s ease;
+        }
+
+        .button:hover {
+            background-color: crimson;
+            color: black;
+        }
+
+        .button:active {
+            transform: translateY(1px) translateX(1px);
+        }
+
+        .button_position_left-top {
+            top: 10%;
+            left: 10%;
+        }
+
+        .button_position_left-bottom {
+            bottom: 10%;
+            left: 10%;
+        }
+
+        .button_position_right-top {
+            top: 10%;
+            right: 10%;
+        }
+
+        .button_position_right-bottom {
+            bottom: 10%;
+            right: 10%;
+        }
+    </style>
+</head> 
+<body>
+    <main class="content">
+        <section class="main-page">
+            <img class="logo rotation" alt="logo compass" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMXqNhgFXNB0oHTYdkPp4MqmGEd2C_LCtkO3Ty0t9NbXyNm1iN&usqp=CAU">
+            <h2 class="main-question" id="question">Выбирай дилемму</h2>
+            <button class="button button_position_left-top" id="left-top" onclick="quiz('left-top');">Заказать доставку?</button>
+            <button class="button button_position_left-bottom" id="left-bottom" onclick="quiz('left-bottom');">Побриться налысо?</button>
+            <button class="button button_position_right-top" id="right-top" onclick="quiz('right-top');">Вызвать такси?</button>
+            <button class="button button_position_right-bottom" id="right-bottom" onclick="quiz('right-bottom');">Настучать<br>на соседей?</button>
+        </section>
+    </main>
+    <script>
+        var currSpot = 0;
+        var myQuiz ="unknown";
+
+        var leftTop = document.getElementsByClassName("button button_position_left-top")[0];
+        var leftBottom = document.getElementsByClassName("button button_position_left-bottom")[0];
+        var rightTop = document.getElementsByClassName("button button_position_right-top")[0];
+        var rightBottom = document.getElementsByClassName("button button_position_right-bottom")[0];
+        var quest = document.getElementsByClassName("main-question")[0];
+
+        var baldResults = ["Да", "А давай!", "Подумай об этом завтра", "Ну перестань!", "Конечно",
+                           "О нет! Только не это", "Отрасти", "Сверься с лунным календарем"]
+        var snitchResults = ["Ну нет", "Уууу, Павлик Морозов!", "Тупо нет", "Покайся!", "Совсем там уже?", 
+        "Лучше посмотри на воду", "По голове себе настучи"]
+        
+        function quiz(choice) {
+            if (currSpot === 0) {
+                if (choice==='left-top') {
+                    myQuiz = 'delivery';
+                    delivery(currSpot, choice);
+                }
+                else if (choice==='right-top') {
+                    myQuiz = 'cab';
+                    cab(currSpot, choice);
+
+                }
+                else if (choice==='right-bottom') {
+                    myQuiz = 'snitch';
+                    leftTop.style.display = "none";
+                    leftBottom.style.display = "none";
+                    rightTop.style.display = "none";
+                    rightBottom.style.display = "none";
+                    quest.innerHTML = snitchResults[Math.floor(Math.random()*(snitchResults.length))];;
+                }
+
+                else if (choice==='left-bottom') {
+                    myQuiz = 'bald';
+                    leftTop.style.display = "none";
+                    leftBottom.style.display = "none";
+                    rightTop.style.display = "none";
+                    rightBottom.style.display = "none";
+                    quest.innerHTML = baldResults[Math.floor(Math.random()*(baldResults.length))];
+                }
+            }
+            else {
+                if (myQuiz === 'delivery') {
+                    delivery(currSpot, choice);
+                }
+
+                else if (myQuiz === 'cab') {
+                    cab(currSpot, choice);
+                }
+            }
+            currSpot += 1;
+        }
+
+        function delivery(questionNumber, choice) {
+            if (questionNumber===0) {
+                leftTop.style.display = "none";
+                leftBottom.innerHTML = "Да";
+                rightTop.style.display = "none";
+                rightBottom.innerHTML = "Нет";
+                quest.innerHTML = "Ты болеешь?";
+            }
+            else if (questionNumber===1 && choice==="right-bottom") {
+                leftTop.style.display = "none";
+                leftBottom.innerHTML = "Да";
+                rightTop.style.display = "block";
+                rightTop.innerHTML = "Нет, я бедный";
+                rightBottom.innerHTML = "Нет, я жадный";
+                quest.innerHTML = "Оставишь чаевые?";
+            }
+            else if ((questionNumber===4 || questionNumber===1) && choice==="left-bottom") {
+                leftBottom.style.display = "none";
+                rightBottom.style.display = "none";
+                quest.innerHTML = "Тaк и быть, вызывай!";
+            }
+
+            else if (questionNumber===2 && choice==="left-bottom") {
+                leftBottom.innerHTML = "Да";
+                rightTop.style.display = "none";
+                rightBottom.innerHTML = "Нет";
+                quest.innerHTML = "Точно?";
+            }
+
+            else if (questionNumber===3 && choice==="left-bottom") {
+                leftBottom.innerHTML = "Да";
+                rightBottom.innerHTML = "Нет";
+                quest.innerHTML = "Прям от души?";
+            }
+
+            else if ((questionNumber===2 || questionNumber===3 || questionNumber===4) && choice==="right-bottom") {
+                leftBottom.style.display = "none";
+                rightTop.style.display = "none";
+                rightBottom.style.display = "none";
+                quest.innerHTML = "Пойди хлебни гречки с молоком";
+            }
+
+            else if (questionNumber===2 && choice==="right-top") {
+                leftBottom.style.display = "none";
+                rightTop.style.display = "none";
+                rightBottom.style.display = "none";
+                quest.innerHTML = "На доставку хватило? Хватит и на чай";
+            }          
+        }
+
+        function cab(questionNumber, choice) {
+            if (questionNumber===0) {
+                leftTop.innerHTML = "В гости";
+                leftBottom.innerHTML = "На работу";
+                rightTop.innerHTML = "Везу еду больному";
+                rightBottom.innerHTML = "На дачу";
+                quest.innerHTML = "Куда едем?";
+            }
+            else if (questionNumber===1 && (choice==="right-bottom" || choice==="left-bottom")) {
+                leftTop.style.display = "none";
+                leftBottom.innerHTML = "Да";
+                rightTop.style.display = "block";
+                rightTop.innerHTML = "Нет, я бедный";
+                rightBottom.innerHTML = "Нет, я жадный";
+                quest.innerHTML = "Оставишь чаевые?";
+            }
+            else if ((questionNumber===4 && choice==="left-bottom") || (questionNumber===1 && choice==="right-top")) {
+                leftBottom.style.display = "none";
+                leftTop.style.display = "none";
+                rightTop.style.display = "none";
+                rightBottom.style.display = "none";
+                quest.innerHTML = "Тaк и быть, вызывай!";
+            }
+
+            else if (questionNumber===2 && choice==="left-bottom") {
+                leftBottom.innerHTML = "Да";
+                rightTop.style.display = "none";
+                rightBottom.innerHTML = "Нет";
+                quest.innerHTML = "Точно?";
+            }
+
+            else if (questionNumber===3 && choice==="left-bottom") {
+                leftBottom.innerHTML = "Да";
+                rightBottom.innerHTML = "Нет";
+                quest.innerHTML = "Прям от души?";
+            }
+
+            else if (((questionNumber===2 || questionNumber===3 || questionNumber===4) && choice==="right-bottom") || (questionNumber===1 && choice==="left-top")) {
+                leftTop.style.display = "none";
+                leftBottom.style.display = "none";
+                rightTop.style.display = "none";
+                rightBottom.style.display = "none";
+                quest.innerHTML = "Сиди дома!";
+            }
+
+            else if (questionNumber===2 && choice==="right-top") {
+                leftBottom.style.display = "none";
+                rightTop.style.display = "none";
+                rightBottom.style.display = "none";
+                quest.innerHTML = "На такси хватило? Хватит и на чай";
+            }          
+        }
+    </script>
+</body>
+</html>
