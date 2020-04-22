@@ -9,14 +9,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&family=Manrope:wght@500&display=swap" rel="stylesheet">
     <style>
         @keyframes spin {
-            100% {
-            transform: rotate(360deg);
+            10% {
+                transform: rotate(7deg);
+            }
+
+            20% {
+                transform: rotate(-15deg);
+            }
+
+            35% {
+                transform: rotate(2deg);
+            }
+
+            37% {
+                transform: rotate(0deg);
+            }
+
+            80% {
+                transform: rotate(0deg);
+            }
+            85% {
+                transform: rotate(-4deg);
+            }
+
+            90% {
+                transform: rotate(0deg);
             }
         }
 
-        .rotation {
-            animation: spin 40s linear infinite;
-        }
+        /* .rotation {
+            animation: spin 10s linear infinite;
+        } */
 
             body {
             margin: 0;
@@ -24,8 +47,8 @@
         }
 
         .content {
-            background-color: black;
-            color: #c8c8c8;
+            background-color: #2c2a2a;
+            color: #CAD2C5;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -35,25 +58,47 @@
             width: 100%;
             height: 100vh;
             align-items: center;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0, 0, 0, .7);
+            z-index: 1;
+        }
+
+        .logo {
+            /* position: absolute; */
+            margin-top: 0;
+            margin-left: 25vw;
+            width: 50vw;
+            height: 50vw;
         }
 
         .main-question {
+            position: absolute;
+            top: 3%;
+            left: 1%;
             width: 30%;
-            padding-bottom: 30px;
+            margin: 0;
+            /* padding-bottom: 30px; */
             font-family: 'Manrope', sans-serif;
             letter-spacing: 8px;
             text-transform: lowercase;
             font-size: 64px;
-            margin: auto;
+            /* margin: auto; */
             text-align: center;
+            z-index: 2;
         }
 
         .button {
             position: absolute;
-            color: crimson;
-            border: 3px solid crimson;
+            color: #61988E;
+            border: 3px solid #61988E;
             border-radius: 50%;
-            background-color: black;
+            background-color: rgba(25, 25, 25, 0.6);
             font-size: 28px;
             line-height: 40px;
             width: 235px;
@@ -62,11 +107,12 @@
             text-transform: uppercase;
             outline: 0;
             transition: background-color 1s ease;
+            z-index: 2;
         }
 
         .button:hover {
-            background-color: crimson;
-            color: black;
+            background-color: rgba(97, 152, 142,.7);
+            color: #2F3E46;
         }
 
         .button:active {
@@ -74,31 +120,43 @@
         }
 
         .button_position_left-top {
-            top: 10%;
-            left: 10%;
+            top: 1%;
+            left: 42%;
         }
 
         .button_position_left-bottom {
-            bottom: 10%;
-            left: 10%;
+            top: 40%;
+            left: 20%;
         }
 
         .button_position_right-top {
-            top: 10%;
-            right: 10%;
+            top: 40%;
+            right: 20%;
         }
 
         .button_position_right-bottom {
-            bottom: 10%;
-            right: 10%;
+            bottom: 1%;
+            left: 42%;
         }
     </style>
 </head> 
 <body>
     <main class="content">
         <section class="main-page">
-            <img class="logo rotation" alt="logo compass" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMXqNhgFXNB0oHTYdkPp4MqmGEd2C_LCtkO3Ty0t9NbXyNm1iN&usqp=CAU">
-            <h2 class="main-question" id="question">Выбирай дилемму</h2>
+            <div class="overlay"></div>
+                <h2 class="main-question" id="question">Выбирай дилемму</h2>
+                <!-- <img class="logo rotation" alt="logo compass" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMXqNhgFXNB0oHTYdkPp4MqmGEd2C_LCtkO3Ty0t9NbXyNm1iN&usqp=CAU"> -->
+                <svg class="logo rotation" viewBox="0 0 202 202" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M106 104C106 106.761 103.761 109 101 109C98.2386 109 96 106.761 96 104C96 101.239 98.2386 99 101 99C103.761 99 106 101.239 106 104Z" stroke="white"/>
+                    <path d="M106 104C106 106.761 103.761 109 101 109C98.2386 109 96 106.761 96 104C96 101.239 98.2386 99 101 99C103.761 99 106 101.239 106 104Z" stroke="white"/>
+                    <path d="M176 101C176 142.421 142.421 176 101 176C59.5786 176 26 142.421 26 101C26 59.5786 59.5786 26 101 26C142.421 26 176 59.5786 176 101Z" stroke="white"/>
+                    <path d="M201 101C201 156.228 156.228 201 101 201C45.7715 201 1 156.228 1 101C1 45.7715 45.7715 1 101 1C156.228 1 201 45.7715 201 101Z" stroke="white"/>
+                    <path d="M93.5 97L57 104L93.5 111.5L101.5 148L109.5 111.5L144.5 104L109.5 97L101.5 60L93.5 97Z" stroke="white"/>
+                    <path d="M84 96.5L79 82L93 89L91.5 95.5L84 96.5Z" stroke="white"/>
+                    <path d="M119 96.5L124 82L110 89L111.5 95.5L119 96.5Z" stroke="white"/>
+                    <path d="M119 112L124 126.5L110 119.5L111.5 113L119 112Z" stroke="white"/>
+                    <path d="M84 112L79 126.5L93 119.5L91.5 113L84 112Z" stroke="white"/>
+                </svg>
             <button class="button button_position_left-top" id="left-top" onclick="quiz('left-top');">Заказать доставку?</button>
             <button class="button button_position_left-bottom" id="left-bottom" onclick="quiz('left-bottom');">Побриться налысо?</button>
             <button class="button button_position_right-top" id="right-top" onclick="quiz('right-top');">Вызвать такси?</button>
