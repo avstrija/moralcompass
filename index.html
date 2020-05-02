@@ -4,174 +4,94 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Компас карантина</title> 
-    <!-- <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="style.css">   -->
-    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&family=Manrope:wght@500&display=swap" rel="stylesheet">
-    <style>
-        @keyframes spin {
-            10% {
-                transform: rotate(7deg);
-            }
-
-            20% {
-                transform: rotate(-15deg);
-            }
-
-            35% {
-                transform: rotate(2deg);
-            }
-
-            37% {
-                transform: rotate(0deg);
-            }
-
-            80% {
-                transform: rotate(0deg);
-            }
-            85% {
-                transform: rotate(-4deg);
-            }
-
-            90% {
-                transform: rotate(0deg);
-            }
-        }
-
-        /* .rotation {
-            animation: spin 10s linear infinite;
-        } */
-
-            body {
-            margin: 0;
-            overflow-x: hidden;
-        }
-
-        .content {
-            background-color: #2c2a2a;
-            color: #CAD2C5;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .main-page {
-            position: relative;
-            display: flex;
-            width: 100%;
-            height: 100vh;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .overlay {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(0, 0, 0, .7);
-            z-index: 1;
-        }
-
-        .logo {
-            /* position: absolute; */
-            margin-top: 0;
-            margin-left: 25vw;
-            width: 50vw;
-            height: 50vw;
-        }
-
-        .main-question {
-            position: absolute;
-            top: 3%;
-            left: 1%;
-            width: 30%;
-            margin: 0;
-            /* padding-bottom: 30px; */
-            font-family: 'Manrope', sans-serif;
-            letter-spacing: 8px;
-            text-transform: lowercase;
-            font-size: 64px;
-            /* margin: auto; */
-            text-align: center;
-            z-index: 2;
-        }
-
-        .button {
-            position: absolute;
-            color: #61988E;
-            border: 3px solid #61988E;
-            border-radius: 50%;
-            background-color: rgba(25, 25, 25, 0.6);
-            font-size: 28px;
-            line-height: 40px;
-            width: 235px;
-            height: 170px;
-            font-family: 'Istok Web', sans-serif;
-            text-transform: uppercase;
-            outline: 0;
-            transition: background-color 1s ease;
-            z-index: 2;
-        }
-
-        .button:hover {
-            background-color: rgba(97, 152, 142,.7);
-            color: #2F3E46;
-        }
-
-        .button:active {
-            transform: translateY(1px) translateX(1px);
-        }
-
-        .button_position_left-top {
-            top: 1%;
-            left: 42%;
-        }
-
-        .button_position_left-bottom {
-            top: 40%;
-            left: 20%;
-        }
-
-        .button_position_right-top {
-            top: 40%;
-            right: 20%;
-        }
-
-        .button_position_right-bottom {
-            bottom: 1%;
-            left: 42%;
-        }
-    </style>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Poiret+One&display=swap" rel="stylesheet">
 </head> 
 <body>
     <main class="content">
-        <section class="main-page">
-            <div class="overlay"></div>
-                <h2 class="main-question" id="question">Выбирай дилемму</h2>
-                <!-- <img class="logo rotation" alt="logo compass" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMXqNhgFXNB0oHTYdkPp4MqmGEd2C_LCtkO3Ty0t9NbXyNm1iN&usqp=CAU"> -->
-                <svg class="logo rotation" viewBox="0 0 202 202" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M106 104C106 106.761 103.761 109 101 109C98.2386 109 96 106.761 96 104C96 101.239 98.2386 99 101 99C103.761 99 106 101.239 106 104Z" stroke="white"/>
-                    <path d="M106 104C106 106.761 103.761 109 101 109C98.2386 109 96 106.761 96 104C96 101.239 98.2386 99 101 99C103.761 99 106 101.239 106 104Z" stroke="white"/>
-                    <path d="M176 101C176 142.421 142.421 176 101 176C59.5786 176 26 142.421 26 101C26 59.5786 59.5786 26 101 26C142.421 26 176 59.5786 176 101Z" stroke="white"/>
-                    <path d="M201 101C201 156.228 156.228 201 101 201C45.7715 201 1 156.228 1 101C1 45.7715 45.7715 1 101 1C156.228 1 201 45.7715 201 101Z" stroke="white"/>
-                    <path d="M93.5 97L57 104L93.5 111.5L101.5 148L109.5 111.5L144.5 104L109.5 97L101.5 60L93.5 97Z" stroke="white"/>
-                    <path d="M84 96.5L79 82L93 89L91.5 95.5L84 96.5Z" stroke="white"/>
-                    <path d="M119 96.5L124 82L110 89L111.5 95.5L119 96.5Z" stroke="white"/>
-                    <path d="M119 112L124 126.5L110 119.5L111.5 113L119 112Z" stroke="white"/>
-                    <path d="M84 112L79 126.5L93 119.5L91.5 113L84 112Z" stroke="white"/>
-                </svg>
-            <button class="button button_position_left-top" id="left-top" onclick="quiz('left-top');">Заказать доставку?</button>
-            <button class="button button_position_left-bottom" id="left-bottom" onclick="quiz('left-bottom');">Побриться налысо?</button>
-            <button class="button button_position_right-top" id="right-top" onclick="quiz('right-top');">Вызвать такси?</button>
-            <button class="button button_position_right-bottom" id="right-bottom" onclick="quiz('right-bottom');">Настучать<br>на соседей?</button>
+        <section class="screen main">
+                <div class="main-text">
+                    <p class="lead">Дорогие учредители Look At Media и редакция Wonderzine!
+                        Сайт Wonderzine существует всего четыре месяца, но за это время успел стать образцово чудовищным проектом для «продвинутой» молодежи.
+                        «Wonderzine — новый сайт для девушек, которые не читают женские журналы и не нуждаются в советах», — заявляете вы. О чем же ваше новаторское издание? </p>
+                    <h2 class="main-question" id="question">Выбирай дилемму</h2>
+                    <img src="images/main_left_arrow.svg" alt="arrow" class="main-left-arrow">
+                </div>
+                <div class="compass">
+                    <img src="images/main-circle-arrow.svg" alt="round arrow" class="compass__arrow rotation">
+                    <div class="compass__overlay">
+                        <div class="compass__column">
+                            <button class="button button_position_left" onclick="quiz('left');">Побриться налысо?</button>   
+                        </div>
+                        <div class="compass__column compass__column_position_central">
+                            <button class="button button_position_top" onclick="quiz('top');">Заказать доставку?</button>
+                            <div class="compass__central-circle"></div>
+                            <button class="button button_position_bottom" onclick="quiz('bottom');">Настучать<br>на соседей?</button>
+                        </div>
+                        <div class="compass__column">
+                            <button class="button button_position_right" onclick="quiz('right');">Вызвать такси?</button>
+                        </div>          
+                    </div>
+                </div>        
+        </section>
+        <section class="screen question">
+            <div class="question-grid">
+                <div class="question-arrow-left">
+                    <img src="images/question-arrow-left.svg" alt="arrow">
+                </div>
+                <div class="star"></div>
+                <h2 class="quiz-question"></h2>
+                    <button class="button answer-left" onclick="answer(1);"></button>
+                    <button class="button answer-left-2" onclick="answer(2);"></button>
+                    <button class="button answer-medium" onclick="answer(3);"></button>
+                    <button class="button answer-right-2" onclick="answer(4);"></button>
+                    <button class="button answer-right" onclick="answer(5);"></button>
+                <div class="vertical-arrow question-arrow-left-2">
+                    <img src="images/arrow-short.svg" alt="arrow">
+                </div>
+                <div class="vertical-arrow question-arrow-medium">
+                    <img src="images/arrow-long.svg" alt="arrow">
+                </div>
+                <div class="vertical-arrow question-arrow-right-2">
+                    <img src="images/arrow-short.svg" alt="arrow">
+                </div>
+                <div class="question-arrow-right">
+                    <img src="images/question-arrow-right.svg" alt="arrow">
+                </div>
+            </div>
+        </section>
+        <section class="result">
+            <div class="result__icon-container">
+                <img src="images/heart-icon.svg" alt="icon" class="result__icon">
+            </div>
+            <h2 class="result__text">Совсем там уже?</h2>
+            <button class="result__startover" onclick="startNew();">
+                <img src="images/result-arrow.svg" alt="arrow" class="result__arrow">
+                Выбрать другую дилемму
+            </button>
         </section>
     </main>
     <script>
         var currSpot = 0;
         var myQuiz ="unknown";
 
-        var leftTop = document.getElementsByClassName("button button_position_left-top")[0];
-        var leftBottom = document.getElementsByClassName("button button_position_left-bottom")[0];
-        var rightTop = document.getElementsByClassName("button button_position_right-top")[0];
-        var rightBottom = document.getElementsByClassName("button button_position_right-bottom")[0];
-        var quest = document.getElementsByClassName("main-question")[0];
+        var leftTop = document.getElementsByClassName("button button_position_top")[0];
+        var leftBottom = document.getElementsByClassName("button button_position_left")[0];
+        var rightTop = document.getElementsByClassName("button button_position_right")[0];
+        var rightBottom = document.getElementsByClassName("button button_position_bottom")[0];
+        var quest = document.getElementsByClassName("quiz-question")[0];
+        
+        var screenMain = document.getElementsByClassName("main")[0];
+        var screenQuiz = document.getElementsByClassName("question")[0];
+        var screenRes = document.getElementsByClassName("result")[0];
+        var resultText = document.getElementsByClassName("result__text")[0];
+
+        var answer1 = document.getElementsByClassName("answer-left")[0];
+        var answer2 = document.getElementsByClassName("answer-left-2")[0];
+        var answer3 = document.getElementsByClassName("answer-medium")[0];
+        var answer4 = document.getElementsByClassName("answer-right-2")[0];
+        var answer5 = document.getElementsByClassName("answer-right")[0];
 
         var baldResults = ["Да", "А давай!", "Подумай об этом завтра", "Ну перестань!", "Конечно",
                            "О нет! Только не это", "Отрасти", "Сверься с лунным календарем"]
@@ -179,147 +99,149 @@
         "Лучше посмотри на воду", "По голове себе настучи"]
         
         function quiz(choice) {
-            if (currSpot === 0) {
-                if (choice==='left-top') {
+                if (choice==='top') {
                     myQuiz = 'delivery';
-                    delivery(currSpot, choice);
+                    delivery(currSpot, 1);
                 }
-                else if (choice==='right-top') {
+                else if (choice==='right') {
                     myQuiz = 'cab';
-                    cab(currSpot, choice);
-
+                    cab(currSpot, 1);
                 }
-                else if (choice==='right-bottom') {
+                else if (choice==='bottom') {
                     myQuiz = 'snitch';
-                    leftTop.style.display = "none";
-                    leftBottom.style.display = "none";
-                    rightTop.style.display = "none";
-                    rightBottom.style.display = "none";
-                    quest.innerHTML = snitchResults[Math.floor(Math.random()*(snitchResults.length))];;
+                    screenMain.style.display = "none";
+                    screenRes.style.display = "flex";
+                    resultText.innerHTML = snitchResults[Math.floor(Math.random()*(snitchResults.length))];;
                 }
 
-                else if (choice==='left-bottom') {
+                else if (choice==='left') {
                     myQuiz = 'bald';
-                    leftTop.style.display = "none";
-                    leftBottom.style.display = "none";
-                    rightTop.style.display = "none";
-                    rightBottom.style.display = "none";
-                    quest.innerHTML = baldResults[Math.floor(Math.random()*(baldResults.length))];
-                }
-            }
-            else {
-                if (myQuiz === 'delivery') {
-                    delivery(currSpot, choice);
+                    screenMain.style.display = "none";
+                    screenRes.style.display = "flex";
+                    resultText.innerHTML = baldResults[Math.floor(Math.random()*(baldResults.length))];
                 }
 
-                else if (myQuiz === 'cab') {
-                    cab(currSpot, choice);
-                }
+        }
+
+        function answer(choice) {
+            if (myQuiz === "delivery") {
+                delivery(currSpot, choice);
             }
-            currSpot += 1;
+            else if (myQuiz === "cab") {
+                cab(currSpot, choice);
+            }
         }
 
         function delivery(questionNumber, choice) {
             if (questionNumber===0) {
-                leftTop.style.display = "none";
-                leftBottom.innerHTML = "Да";
-                rightTop.style.display = "none";
-                rightBottom.innerHTML = "Нет";
+                screenMain.style.display = "none";
+                screenQuiz.style.display = "flex";
+                answer1.innerHTML = "Да";
+                answer5.innerHTML = "Нет";
                 quest.innerHTML = "Ты болеешь?";
+
+                answer2.style.display = "none";
+                answer3.style.display = "none";
+                answer4.style.display = "none";
             }
-            else if (questionNumber===1 && choice==="right-bottom") {
-                leftTop.style.display = "none";
-                leftBottom.innerHTML = "Да";
-                rightTop.style.display = "block";
-                rightTop.innerHTML = "Нет, я бедный";
-                rightBottom.innerHTML = "Нет, я жадный";
+            else if (questionNumber===1 && choice===5) {
+                answer1.innerHTML = "Да";
+                answer3.style.display = "block";
+                answer3.innerHTML = "Нет, я бедный";
+                answer5.innerHTML = "Нет, я жадный";
                 quest.innerHTML = "Оставишь чаевые?";
             }
-            else if ((questionNumber===4 || questionNumber===1) && choice==="left-bottom") {
-                leftBottom.style.display = "none";
-                rightBottom.style.display = "none";
-                quest.innerHTML = "Тaк и быть, вызывай!";
+            else if ((questionNumber===4 || questionNumber===1) && choice===1) {
+                screenQuiz.style.display = "none";
+                screenRes.style.display = "flex";
+                resultText.innerHTML = "Тaк и быть, вызывай!";
             }
 
-            else if (questionNumber===2 && choice==="left-bottom") {
-                leftBottom.innerHTML = "Да";
-                rightTop.style.display = "none";
-                rightBottom.innerHTML = "Нет";
+            else if (questionNumber===2 && choice===1) {
+                answer5.innerHTML = "Нет";
                 quest.innerHTML = "Точно?";
+
+                answer3.style.display = "none";
             }
 
-            else if (questionNumber===3 && choice==="left-bottom") {
-                leftBottom.innerHTML = "Да";
-                rightBottom.innerHTML = "Нет";
+            else if (questionNumber===3 && choice===1) {
                 quest.innerHTML = "Прям от души?";
             }
 
-            else if ((questionNumber===2 || questionNumber===3 || questionNumber===4) && choice==="right-bottom") {
-                leftBottom.style.display = "none";
-                rightTop.style.display = "none";
-                rightBottom.style.display = "none";
-                quest.innerHTML = "Пойди хлебни гречки с молоком";
+            else if ((questionNumber===2 || questionNumber===3 || questionNumber===4) && choice===5) {
+                screenQuiz.style.display = "none";
+                screenRes.style.display = "flex";
+                resultText.innerHTML = "Пойди хлебни гречки с молоком";
             }
 
-            else if (questionNumber===2 && choice==="right-top") {
-                leftBottom.style.display = "none";
-                rightTop.style.display = "none";
-                rightBottom.style.display = "none";
-                quest.innerHTML = "На доставку хватило? Хватит и на чай";
-            }          
+            else if (questionNumber===2 && choice===3) {
+                screenQuiz.style.display = "none";
+                screenRes.style.display = "flex";
+                resultText.innerHTML = "На доставку хватило? Хватит и на чай";
+            }      
+            currSpot += 1;    
         }
 
         function cab(questionNumber, choice) {
             if (questionNumber===0) {
-                leftTop.innerHTML = "В гости";
-                leftBottom.innerHTML = "На работу";
-                rightTop.innerHTML = "Везу еду больному";
-                rightBottom.innerHTML = "На дачу";
+                screenMain.style.display = "none";
+                screenQuiz.style.display = "flex";
+
+                answer1.innerHTML = "В гости";
+                answer2.style.display = "block";
+                answer2.innerHTML = "На работу";
+                answer4.style.display = "block";
+                answer4.innerHTML = "Везу еду больному";
+                answer5.innerHTML = "На дачу";
                 quest.innerHTML = "Куда едем?";
+
+                answer3.style.display = "none";
             }
-            else if (questionNumber===1 && (choice==="right-bottom" || choice==="left-bottom")) {
-                leftTop.style.display = "none";
-                leftBottom.innerHTML = "Да";
-                rightTop.style.display = "block";
-                rightTop.innerHTML = "Нет, я бедный";
-                rightBottom.innerHTML = "Нет, я жадный";
+            else if (questionNumber===1 && (choice===2 || choice===5)) {
+                answer1.innerHTML = "Да";
+                answer3.style.display = "block";
+                answer3.innerHTML = "Нет, я бедный";
+                answer5.innerHTML = "Нет, я жадный";
                 quest.innerHTML = "Оставишь чаевые?";
+
+                answer2.style.display = "none";
+                answer4.style.display = "none";
             }
-            else if ((questionNumber===4 && choice==="left-bottom") || (questionNumber===1 && choice==="right-top")) {
-                leftBottom.style.display = "none";
-                leftTop.style.display = "none";
-                rightTop.style.display = "none";
-                rightBottom.style.display = "none";
-                quest.innerHTML = "Тaк и быть, вызывай!";
+            else if ((questionNumber===4 && choice===1) || (questionNumber===1 && choice===4)) {
+                screenQuiz.style.display = "none";
+                screenRes.style.display = "flex";
+                resultText.innerHTML = "Тaк и быть, вызывай!";
             }
 
-            else if (questionNumber===2 && choice==="left-bottom") {
-                leftBottom.innerHTML = "Да";
-                rightTop.style.display = "none";
-                rightBottom.innerHTML = "Нет";
+            else if (questionNumber===2 && choice===1) {
+                answer5.innerHTML = "Нет";
                 quest.innerHTML = "Точно?";
+
+                answer3.style.display = "none";
             }
 
-            else if (questionNumber===3 && choice==="left-bottom") {
-                leftBottom.innerHTML = "Да";
-                rightBottom.innerHTML = "Нет";
+            else if (questionNumber===3 && choice===1) {
                 quest.innerHTML = "Прям от души?";
             }
 
-            else if (((questionNumber===2 || questionNumber===3 || questionNumber===4) && choice==="right-bottom") || (questionNumber===1 && choice==="left-top")) {
-                leftTop.style.display = "none";
-                leftBottom.style.display = "none";
-                rightTop.style.display = "none";
-                rightBottom.style.display = "none";
-                quest.innerHTML = "Сиди дома!";
+            else if (((questionNumber===2 || questionNumber===3 || questionNumber===4) && choice===5) || (questionNumber===1 && choice===1)) {
+                screenQuiz.style.display = "none";
+                screenRes.style.display = "flex";
+                resultText.innerHTML = "Сиди дома!";
             }
 
-            else if (questionNumber===2 && choice==="right-top") {
-                leftBottom.style.display = "none";
-                rightTop.style.display = "none";
-                rightBottom.style.display = "none";
-                quest.innerHTML = "На такси хватило? Хватит и на чай";
-            }          
+            else if (questionNumber===2 && choice===3) {
+                screenQuiz.style.display = "none";
+                screenRes.style.display = "flex";
+                resultText.innerHTML = "На такси хватило? Хватит и на чай";
+            }   
+            currSpot += 1;           
+        }
+
+        function startNew() {
+            currSpot = 0;
+            screenMain.style.display = "flex";
+            screenRes.style.display = "none";
         }
     </script>
 </body>
