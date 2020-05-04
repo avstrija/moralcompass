@@ -273,6 +273,6 @@
 
         function startNew() {
             currSpot = 0;
-            screenTransition(screen1, screenMain);
+            screenTransition(screenRes, screenMain);
             loadQuizzes();
         }
