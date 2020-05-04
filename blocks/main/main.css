@@ -15,7 +15,7 @@
 @media screen and (max-width: 1024px) {
     .main {
         flex-direction: column-reverse;
-        justify-content: space-around;
+        justify-content: flex-start;
         align-items: center;
     }
 }
@@ -31,7 +31,6 @@
         flex-direction: column-reverse;
         margin: auto;
         width: 90vw;
-        margin-bottom: 10%;
     }
 }
 
@@ -42,12 +41,13 @@
     margin-block-end: 32px;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
     .main__lead {
         font-size: 14px;
         line-height: 1.2;
         margin-block-end: 16px;
         text-align: justify;
+        margin-bottom: 10%;
     }
 }
 
@@ -124,7 +124,7 @@
     .main__wrapper {
         position: relative;
         margin-bottom: 5%;
-        bottom: 0;
+        bottom: 30px;
         right: 0;
     }
 }

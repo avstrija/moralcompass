@@ -7,9 +7,11 @@
     margin: 5%;
     width: 610px;
     height: 610px;
+    max-width: 90vmin;
+    max-height: 90vmin;
 }
 
-/* @media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .compass {
         width: 520px;
         height: 520px;
@@ -21,15 +23,13 @@
         width: 400px;
         height: 400px;
     }
-} */
+}
 
 @media screen and (max-width: 425px) {
     .compass {
         margin-top: 15%;
         width: 350px;
         height: 350px;
-        min-width: 90vw;
-        min-height: 90vw;
     }
 }
 
