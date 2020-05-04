@@ -41,6 +41,10 @@
     animation: circle 10s ease-in-out;
 }
 
+.vibration {
+    animation: spin 8s ease-in-out infinite;
+}
+
 .content {
     position: relative;
     background-color: #1C1C1C;
@@ -53,11 +57,13 @@
     height: 100vh;
     display: flex;
     justify-content: space-between;
-    /* transition: visibility 1s ease-out; */
+    transition: opacity .8s ease-in-out;
 }
 
 .question {
-    display: none;
+    height: 0;
+    opacity: 0;
+    justify-content: center;
 }
 
 .main-text {
@@ -147,8 +153,12 @@
     z-index: 2;
 }
 
-.question {
-    justify-content: center;
+.button:hover {
+    border: 1px solid #F4F4F4;
+}
+
+.button:active {
+    color: black;
 }
 
 .question-grid {
@@ -171,7 +181,7 @@
     grid-column: 2/7;
 }
 
-.question-arrow-left {
+.question__arrow1 {
     grid-row: 1 / span 4; 
     display: flex;
     flex-direction: column;
@@ -179,7 +189,25 @@
     padding-bottom: 36px;
 }
 
-.question-arrow-right {
+.question__arrow2 {
+    margin: auto;
+    grid-row: 3;
+    grid-column: 3;
+}
+
+.question__arrow3 {
+    margin: auto;
+    grid-row: 3/6;
+    grid-column: 4;
+}
+
+.question__arrow4 {
+    margin: auto;
+    grid-row: 3;
+    grid-column: 5;
+}
+
+.question__arrow5 {
     grid-row: 1 / span 4; 
     grid-column: 7;
     display: flex;
@@ -224,36 +252,19 @@
     grid-column: 6;
 }
 
-.vertical-arrow {
-    margin: auto;
-}
-
-.question-arrow-left-2 {
-    grid-row: 3;
-    grid-column: 3;
-}
-
-.question-arrow-right-2 {
-    grid-row: 3;
-    grid-column: 5;
-}
-
-.question-arrow-medium {
-    grid-row: 3/6;
-    grid-column: 4;
-}
-
 .result {
-    height: 100vh;
-    display: none;
+    height: 0;
+    opacity: 0;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
 }
 
 .result__text {
     font-weight: normal;
     font-size: 50px;
-    line-height: 65px;
+    line-height: 50px;
     text-align: center;
     margin: 0;
 }
@@ -266,8 +277,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 12%;
-    margin-bottom: 6%;
+    margin-top: 0%;
+    margin-bottom: 1%;
 }
 
 .result__icon {
@@ -288,7 +299,7 @@
     text-align: center;
     color: #971B1B;
     border-width: 0;
-    margin-top: 15%;
+    margin-top: 0;
 }
 
 .result__startover:hover {

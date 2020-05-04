@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Poiret+One&display=swap" rel="stylesheet">
 </head> 
-<body>
+<body onload="loadQuizzes();">
     <main class="content">
         <section class="screen main">
                 <div class="main-text">
-                    <p class="lead">Дорогие учредители Look At Media и редакция Wonderzine!
-                        Сайт Wonderzine существует всего четыре месяца, но за это время успел стать образцово чудовищным проектом для «продвинутой» молодежи.
-                        «Wonderzine — новый сайт для девушек, которые не читают женские журналы и не нуждаются в советах», — заявляете вы. О чем же ваше новаторское издание? </p>
+                    <p class="lead">Приятная сторона карантина — не нужно почти ничего решать. 
+                        Но если даже в изоляции тебя гложут сомнения, найти должные ответы на 
+                        главные этические дилеммы поможет совершенный инструмент — моральный компас.  
+                        Он точно знает, как поступить с надоевшими соседями, Zoom-конференциями и фильмом «Дау».
+                    </p>
                     <h2 class="main-question" id="question">Выбирай дилемму</h2>
                     <img src="images/main_left_arrow.svg" alt="arrow" class="main-left-arrow">
                 </div>
@@ -22,7 +24,7 @@
                     <img src="images/main-circle-arrow.svg" alt="round arrow" class="compass__arrow rotation">
                     <div class="compass__overlay">
                         <div class="compass__column">
-                            <button class="button button_position_left" onclick="quiz('left');">Побриться налысо?</button>   
+                            <button class="button button_position_left" onclick="quiz('left');"></button>   
                         </div>
                         <div class="compass__column compass__column_position_central">
                             <button class="button button_position_top" onclick="quiz('top');">Заказать доставку?</button>
@@ -37,212 +39,42 @@
         </section>
         <section class="screen question">
             <div class="question-grid">
-                <div class="question-arrow-left">
+                <div class="question__arrow1">
                     <img src="images/question-arrow-left.svg" alt="arrow">
                 </div>
-                <div class="star"></div>
+                <div class="star vibration"></div>
                 <h2 class="quiz-question"></h2>
                     <button class="button answer-left" onclick="answer(1);"></button>
                     <button class="button answer-left-2" onclick="answer(2);"></button>
                     <button class="button answer-medium" onclick="answer(3);"></button>
                     <button class="button answer-right-2" onclick="answer(4);"></button>
                     <button class="button answer-right" onclick="answer(5);"></button>
-                <div class="vertical-arrow question-arrow-left-2">
+                <div class="question__arrow2">
                     <img src="images/arrow-short.svg" alt="arrow">
                 </div>
-                <div class="vertical-arrow question-arrow-medium">
+                <div class="question__arrow3">
                     <img src="images/arrow-long.svg" alt="arrow">
                 </div>
-                <div class="vertical-arrow question-arrow-right-2">
+                <div class="question__arrow4">
                     <img src="images/arrow-short.svg" alt="arrow">
                 </div>
-                <div class="question-arrow-right">
+                <div class="question__arrow5">
                     <img src="images/question-arrow-right.svg" alt="arrow">
                 </div>
             </div>
         </section>
-        <section class="result">
+        <section class="screen result">
             <div class="result__icon-container">
                 <img src="images/heart-icon.svg" alt="icon" class="result__icon">
             </div>
-            <h2 class="result__text">Совсем там уже?</h2>
+            <h2 class="result__text"></h2>
             <button class="result__startover" onclick="startNew();">
                 <img src="images/result-arrow.svg" alt="arrow" class="result__arrow">
                 Выбрать другую дилемму
             </button>
         </section>
     </main>
-    <script>
-        var currSpot = 0;
-        var myQuiz ="unknown";
-
-        var leftTop = document.getElementsByClassName("button button_position_top")[0];
-        var leftBottom = document.getElementsByClassName("button button_position_left")[0];
-        var rightTop = document.getElementsByClassName("button button_position_right")[0];
-        var rightBottom = document.getElementsByClassName("button button_position_bottom")[0];
-        var quest = document.getElementsByClassName("quiz-question")[0];
-        
-        var screenMain = document.getElementsByClassName("main")[0];
-        var screenQuiz = document.getElementsByClassName("question")[0];
-        var screenRes = document.getElementsByClassName("result")[0];
-        var resultText = document.getElementsByClassName("result__text")[0];
-
-        var answer1 = document.getElementsByClassName("answer-left")[0];
-        var answer2 = document.getElementsByClassName("answer-left-2")[0];
-        var answer3 = document.getElementsByClassName("answer-medium")[0];
-        var answer4 = document.getElementsByClassName("answer-right-2")[0];
-        var answer5 = document.getElementsByClassName("answer-right")[0];
-
-        var baldResults = ["Да", "А давай!", "Подумай об этом завтра", "Ну перестань!", "Конечно",
-                           "О нет! Только не это", "Отрасти", "Сверься с лунным календарем"]
-        var snitchResults = ["Ну нет", "Уууу, Павлик Морозов!", "Тупо нет", "Покайся!", "Совсем там уже?", 
-        "Лучше посмотри на воду", "По голове себе настучи"]
-        
-        function quiz(choice) {
-                if (choice==='top') {
-                    myQuiz = 'delivery';
-                    delivery(currSpot, 1);
-                }
-                else if (choice==='right') {
-                    myQuiz = 'cab';
-                    cab(currSpot, 1);
-                }
-                else if (choice==='bottom') {
-                    myQuiz = 'snitch';
-                    screenMain.style.display = "none";
-                    screenRes.style.display = "flex";
-                    resultText.innerHTML = snitchResults[Math.floor(Math.random()*(snitchResults.length))];;
-                }
-
-                else if (choice==='left') {
-                    myQuiz = 'bald';
-                    screenMain.style.display = "none";
-                    screenRes.style.display = "flex";
-                    resultText.innerHTML = baldResults[Math.floor(Math.random()*(baldResults.length))];
-                }
-
-        }
-
-        function answer(choice) {
-            if (myQuiz === "delivery") {
-                delivery(currSpot, choice);
-            }
-            else if (myQuiz === "cab") {
-                cab(currSpot, choice);
-            }
-        }
-
-        function delivery(questionNumber, choice) {
-            if (questionNumber===0) {
-                screenMain.style.display = "none";
-                screenQuiz.style.display = "flex";
-                answer1.innerHTML = "Да";
-                answer5.innerHTML = "Нет";
-                quest.innerHTML = "Ты болеешь?";
-
-                answer2.style.display = "none";
-                answer3.style.display = "none";
-                answer4.style.display = "none";
-            }
-            else if (questionNumber===1 && choice===5) {
-                answer1.innerHTML = "Да";
-                answer3.style.display = "block";
-                answer3.innerHTML = "Нет, я бедный";
-                answer5.innerHTML = "Нет, я жадный";
-                quest.innerHTML = "Оставишь чаевые?";
-            }
-            else if ((questionNumber===4 || questionNumber===1) && choice===1) {
-                screenQuiz.style.display = "none";
-                screenRes.style.display = "flex";
-                resultText.innerHTML = "Тaк и быть, вызывай!";
-            }
-
-            else if (questionNumber===2 && choice===1) {
-                answer5.innerHTML = "Нет";
-                quest.innerHTML = "Точно?";
-
-                answer3.style.display = "none";
-            }
-
-            else if (questionNumber===3 && choice===1) {
-                quest.innerHTML = "Прям от души?";
-            }
-
-            else if ((questionNumber===2 || questionNumber===3 || questionNumber===4) && choice===5) {
-                screenQuiz.style.display = "none";
-                screenRes.style.display = "flex";
-                resultText.innerHTML = "Пойди хлебни гречки с молоком";
-            }
-
-            else if (questionNumber===2 && choice===3) {
-                screenQuiz.style.display = "none";
-                screenRes.style.display = "flex";
-                resultText.innerHTML = "На доставку хватило? Хватит и на чай";
-            }      
-            currSpot += 1;    
-        }
-
-        function cab(questionNumber, choice) {
-            if (questionNumber===0) {
-                screenMain.style.display = "none";
-                screenQuiz.style.display = "flex";
-
-                answer1.innerHTML = "В гости";
-                answer2.style.display = "block";
-                answer2.innerHTML = "На работу";
-                answer4.style.display = "block";
-                answer4.innerHTML = "Везу еду больному";
-                answer5.innerHTML = "На дачу";
-                quest.innerHTML = "Куда едем?";
-
-                answer3.style.display = "none";
-            }
-            else if (questionNumber===1 && (choice===2 || choice===5)) {
-                answer1.innerHTML = "Да";
-                answer3.style.display = "block";
-                answer3.innerHTML = "Нет, я бедный";
-                answer5.innerHTML = "Нет, я жадный";
-                quest.innerHTML = "Оставишь чаевые?";
-
-                answer2.style.display = "none";
-                answer4.style.display = "none";
-            }
-            else if ((questionNumber===4 && choice===1) || (questionNumber===1 && choice===4)) {
-                screenQuiz.style.display = "none";
-                screenRes.style.display = "flex";
-                resultText.innerHTML = "Тaк и быть, вызывай!";
-            }
-
-            else if (questionNumber===2 && choice===1) {
-                answer5.innerHTML = "Нет";
-                quest.innerHTML = "Точно?";
-
-                answer3.style.display = "none";
-            }
-
-            else if (questionNumber===3 && choice===1) {
-                quest.innerHTML = "Прям от души?";
-            }
-
-            else if (((questionNumber===2 || questionNumber===3 || questionNumber===4) && choice===5) || (questionNumber===1 && choice===1)) {
-                screenQuiz.style.display = "none";
-                screenRes.style.display = "flex";
-                resultText.innerHTML = "Сиди дома!";
-            }
-
-            else if (questionNumber===2 && choice===3) {
-                screenQuiz.style.display = "none";
-                screenRes.style.display = "flex";
-                resultText.innerHTML = "На такси хватило? Хватит и на чай";
-            }   
-            currSpot += 1;           
-        }
-
-        function startNew() {
-            currSpot = 0;
-            screenMain.style.display = "flex";
-            screenRes.style.display = "none";
-        }
+    <script src="./script.js">
     </script>
 </body>
 </html>
