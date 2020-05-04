@@ -83,6 +83,11 @@
         "Лучше посмотри на воду", "По голове себе настучи"]
         
         function loadQuizzes() {
+            // quizLeft
+            // quizBottom
+            // quizTop
+            quizRight.style.transform = "scale(1.1)";
+            quizRight.style.transform = "scale(1)";
             quizLeft.innerHTML = maybeDilemma[Math.floor(Math.random()*(maybeDilemma.length))];
             quizBottom.innerHTML = nopeDilemma[Math.floor(Math.random()*(nopeDilemma.length))];
         }
@@ -268,6 +273,6 @@
 
         function startNew() {
             currSpot = 0;
-            screenTransition(screenRes, screenMain);
-            loadQuizzes()
+            screenTransition(screen1, screenMain);
+            loadQuizzes();
         }

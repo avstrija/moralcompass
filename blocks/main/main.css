@@ -106,16 +106,11 @@
     background-image: url('../../images/circle-arrow-small.svg');
     background-size: cover;
     background-repeat: no-repeat;
-    transition: all .5s linear;
+    transition: all .1s linear;
 }
 
 .main__reload:hover {
     transform: scale(1.03);
-}
-
-.main__reload:visited {
-    background-color: red;
-    transform: translate(2px, 2px);
 }
 
 .main__wrapper {
