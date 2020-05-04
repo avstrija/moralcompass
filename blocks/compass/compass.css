@@ -1,0 +1,98 @@
+.compass {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 5%;
+    width: 610px;
+    height: 610px;
+}
+
+/* @media screen and (max-width: 1024px) {
+    .compass {
+        width: 520px;
+        height: 520px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .compass {
+        width: 400px;
+        height: 400px;
+    }
+} */
+
+@media screen and (max-width: 425px) {
+    .compass {
+        margin-top: 15%;
+        width: 350px;
+        height: 350px;
+        min-width: 90vw;
+        min-height: 90vw;
+    }
+}
+
+.compass__arrow {
+    width: 100%;
+    transform: rotate(-40deg);
+    animation: circle 10s ease-in-out;
+}
+
+.compass__overlay {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.compass__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.compass__column_position_central {
+    width: 300px;
+    justify-content: space-between;
+}
+
+/* @media screen and (max-width: 1024px) {
+    .compass__column_position_central {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .compass__column_position_central {
+        width: 150px;
+    }
+} */
+
+@media screen and (max-width: 425px) {
+    .compass__column_position_central {
+        width: 100px;
+    }
+}
+
+.compass__central-circle {
+    width: 100%;
+    padding-bottom: 100%;
+    background-color: #971B1B;
+    border-radius: 50%;
+    background-image: url('../../images/central-star.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+@media screen and (max-width: 425px) {
+    .compass__central-circle {
+        background-image: url('../../images/central-star-bold.svg');
+        background-size: 80%;
+    }
+}

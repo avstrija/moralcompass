@@ -4,24 +4,27 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Компас карантина</title> 
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages/index.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Poiret+One&display=swap" rel="stylesheet">
 </head> 
 <body onload="loadQuizzes();">
     <main class="content">
         <section class="screen main">
-                <div class="main-text">
-                    <p class="lead">Приятная сторона карантина — не нужно почти ничего решать. 
-                        Но если даже в изоляции тебя гложут сомнения, найти должные ответы на 
+                <div class="main__wrapper">
+                    <button class="main__reload" onclick="loadQuizzes();">Еще<br>дилеммы
+                    </button>
+                </div>
+                <div class="main__text">
+                    <p class="main__lead">Приятная сторона карантина — не нужно почти ничего решать. 
+                        Но если даже в изоляции тебя гложут сомнения, найти ответы на 
                         главные этические дилеммы поможет совершенный инструмент — моральный компас.  
                         Он точно знает, как поступить с надоевшими соседями, Zoom-конференциями и фильмом «Дау».
                     </p>
-                    <h2 class="main-question" id="question">Выбирай дилемму</h2>
-                    <img src="images/main_left_arrow.svg" alt="arrow" class="main-left-arrow">
+                    <h2 class="main__question">Выбирай дилемму</h2>
+                    <img src="images/main_left_arrow.svg" alt="arrow" class="main__left-arrow">
                 </div>
                 <div class="compass">
-                    <img src="images/main-circle-arrow.svg" alt="round arrow" class="compass__arrow rotation">
+                    <img src="images/main-circle-arrow.svg" alt="round arrow" class="compass__arrow">
                     <div class="compass__overlay">
                         <div class="compass__column">
                             <button class="button button_position_left" onclick="quiz('left');"></button>   
@@ -38,28 +41,28 @@
                 </div>        
         </section>
         <section class="screen question">
-            <div class="question-grid">
-                <div class="question__arrow1">
-                    <img src="images/question-arrow-left.svg" alt="arrow">
-                </div>
-                <div class="star vibration"></div>
-                <h2 class="quiz-question"></h2>
-                    <button class="button answer-left" onclick="answer(1);"></button>
-                    <button class="button answer-left-2" onclick="answer(2);"></button>
-                    <button class="button answer-medium" onclick="answer(3);"></button>
-                    <button class="button answer-right-2" onclick="answer(4);"></button>
-                    <button class="button answer-right" onclick="answer(5);"></button>
-                <div class="question__arrow2">
-                    <img src="images/arrow-short.svg" alt="arrow">
+            <div class="question__grid">
+                <div class="question__star"></div>
+                <h2 class="question__text"></h2>
+                    <button class="button question__answer1" onclick="answer(1);"></button>
+                    <button class="button question__answer2" onclick="answer(2);"></button>
+                    <button class="button question__answer3" onclick="answer(3);"></button>
+                    <button class="button question__answer4" onclick="answer(4);"></button>
+                    <button class="button question__answer5" onclick="answer(5);"></button>
+                    <div class="question__arrow1">
+                        <img class="question__pic-responsive1" alt="arrow">
+                    </div>
+                    <div class="question__arrow2">
+                        <img class="question__pic-responsive2" src="images/arrow-short.svg" alt="arrow">
                 </div>
                 <div class="question__arrow3">
-                    <img src="images/arrow-long.svg" alt="arrow">
+                        <img src="images/arrow-long.svg" alt="arrow">
                 </div>
                 <div class="question__arrow4">
-                    <img src="images/arrow-short.svg" alt="arrow">
+                        <img class="question__pic-responsive2" alt="arrow">
                 </div>
                 <div class="question__arrow5">
-                    <img src="images/question-arrow-right.svg" alt="arrow">
+                        <img class="question__pic-responsive1" alt="arrow">
                 </div>
             </div>
         </section>

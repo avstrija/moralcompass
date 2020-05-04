@@ -12,7 +12,7 @@
             "Поныть в соцсетях?",
             "Сыграть в онлайн-казино?",
             "Купить ружье?",
-            "Сходить в подпольный салон красоты?",
+            "Вызвать маникюр на дом?",
             "Сходить в церковь?",
             ];
         
@@ -40,7 +40,7 @@
         var quizLeft = document.getElementsByClassName("button button_position_left")[0];
         var quizRight = document.getElementsByClassName("button button_position_right")[0];
         var quizBottom = document.getElementsByClassName("button button_position_bottom")[0];
-        var quest = document.getElementsByClassName("quiz-question")[0];
+        var quest = document.getElementsByClassName("question__text")[0];
         
         var screenMain = document.getElementsByClassName("main")[0];
         var screenQuiz = document.getElementsByClassName("question")[0];
@@ -48,11 +48,11 @@
         var resultText = document.getElementsByClassName("result__text")[0];
         var resultIcon = document.getElementsByClassName("result__icon-container")[0];
 
-        var answer1 = document.getElementsByClassName("answer-left")[0];
-        var answer2 = document.getElementsByClassName("answer-left-2")[0];
-        var answer3 = document.getElementsByClassName("answer-medium")[0];
-        var answer4 = document.getElementsByClassName("answer-right-2")[0];
-        var answer5 = document.getElementsByClassName("answer-right")[0];
+        var answer1 = document.getElementsByClassName("question__answer1")[0];
+        var answer2 = document.getElementsByClassName("question__answer2")[0];
+        var answer3 = document.getElementsByClassName("question__answer3")[0];
+        var answer4 = document.getElementsByClassName("question__answer4")[0];
+        var answer5 = document.getElementsByClassName("question__answer5")[0];
 
         var arrow1 = document.getElementsByClassName("question__arrow1")[0];
         var arrow2 = document.getElementsByClassName("question__arrow2")[0];
@@ -124,8 +124,10 @@
         }
 
         function screenTransition(screen1, screen2) {
+            screen1.style.visibility = "hidden";
             screen1.style.opacity = "0";
             screen1.style.height = "0";
+            screen2.style.visibility = "visible";
             screen2.style.height = "100vh";
             screen2.style.opacity = "1";
             
