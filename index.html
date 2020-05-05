@@ -5,15 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Компас карантина</title> 
     <link rel="stylesheet" href="pages/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Poiret+One&display=swap" rel="stylesheet">
 </head> 
 <body onload="loadQuizzes();">
     <main class="content">
         <section class="screen main">
-                <div class="main__wrapper">
-                    <button class="main__reload" onclick="loadQuizzes();">Еще<br>дилеммы
-                    </button>
-                </div>
                 <div class="main__text">
                     <p class="main__lead">Приятная сторона карантина — не нужно почти ничего решать. 
                         Но если даже в изоляции тебя гложут сомнения, найти ответы на 
@@ -24,18 +19,22 @@
                     <img src="images/main_left_arrow.svg" alt="arrow" class="main__left-arrow">
                 </div>
                 <div class="compass">
+                    <div class="main__wrapper">
+                        <button class="main__reload" onclick="loadQuizzes();">Еще<br>дилеммы
+                        </button>
+                    </div>
                     <img src="images/main-circle-arrow.svg" alt="round arrow" class="compass__arrow">
                     <div class="compass__overlay">
                         <div class="compass__column">
                             <button class="button button_position_left" onclick="quiz('left');"></button>   
                         </div>
                         <div class="compass__column compass__column_position_central">
-                            <button class="button button_position_top" onclick="quiz('top');">Заказать доставку?</button>
+                            <button class="button button_position_top" onclick="quiz('top');"></button>
                             <div class="compass__central-circle"></div>
                             <button class="button button_position_bottom" onclick="quiz('bottom');">Настучать<br>на соседей?</button>
                         </div>
                         <div class="compass__column">
-                            <button class="button button_position_right" onclick="quiz('right');">Вызвать такси?</button>
+                            <button class="button button_position_right" onclick="quiz('right');"></button>
                         </div>          
                     </div>
                 </div>        

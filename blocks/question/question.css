@@ -45,6 +45,7 @@
     .question__grid {
         grid-template-rows: repeat(3, auto) 75px auto 75px;
         grid-gap: 10px;
+        max-width: 90vw;
     }
 }
 
