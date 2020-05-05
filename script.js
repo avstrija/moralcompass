@@ -4,6 +4,18 @@ var currSpot = 0;
 var quizTop = "unknown";
 var quizBottom = "unknown";
 
+const icons = ["bomb", 
+            "fire", "house", "oxygen",
+            "skull", "syringe", "chemistry",
+            "garlic", "pump", "martini",
+            "pot", "shield", "wand",
+            "microscope", "razor", "mask",
+            "bed", "heartbeat", "stetoscope", "spray", "scissors",
+            "knife", "doctor", "heart",
+            "bottle", "sun", "ambulance", 
+            "medical1", "syringe2", "medical2", "bucket"
+        ]
+
 const nopeDilemma = ["Настучать на соседей?",
             "Написать бывшим?",
             "Выгнать жильцов за неуплату?",
@@ -43,11 +55,11 @@ const quizzes = {
     "party":        "Устроить вечеринку?",
     "face":         "Потрогать лицо?",
     "lend":         "Дать в долг?",
-    "borrow":       "Взять в долг?",
+    "borrow":       "Открыть кредит?",
     "buckwheat":    "Купить гречки?",
     "mask":         "Сшить маску?",
     "sanitizer":    "Сделать санитайзер?",
-    "icons":        "Поцеловать иконы?",
+    "orthodox":        "Поцеловать иконы?",
     "clean":        "Убраться в квартире?",
     "pasta":        "Макарошки или пюрешка?",
     "borscht":      "Сварить борщ?",
@@ -65,6 +77,7 @@ var buttonLeft = document.getElementsByClassName("button button_position_left")[
 var buttonRight = document.getElementsByClassName("button button_position_right")[0];
 var buttonBottom = document.getElementsByClassName("button button_position_bottom")[0];
 var quest = document.getElementsByClassName("question__text")[0];
+var icon = document.getElementsByClassName("result__icon")[0];
 
 var screenMain = document.getElementsByClassName("main")[0];
 var introText = document.getElementsByClassName("main__text")[0];
@@ -130,7 +143,8 @@ function quiz(choice) {
         }
 
         if (choice==='top') {
-            myQuiz = quizTop;
+            // myQuiz = quizTop;
+            myQuiz = "clean";
             answer(1);
         }
         else if (choice==='bottom') {
@@ -154,37 +168,37 @@ function answer(choice) {
             cab(currSpot, choice);
             break;
         case "doctor": 
-            empty(currSpot, choice);
+            doctor(currSpot, choice);
             break;
         case "haircut": 
-            empty(currSpot, choice);
+            haircut(currSpot, choice);
             break;
         case "party": 
-            empty(currSpot, choice);
+            party(currSpot, choice);
             break;
         case "face": 
-            empty(currSpot, choice);
+            face(currSpot, choice);
             break;
         case "lend": 
-            empty(currSpot, choice);
+            lend(currSpot, choice);
             break;
         case "borrow": 
-            empty(currSpot, choice);
+            borrow(currSpot, choice);
             break;
         case "buckwheat": 
-            empty(currSpot, choice);
+            buckwheat(currSpot, choice);
             break;
         case "mask": 
-            empty(currSpot, choice);
+            mask(currSpot, choice);
             break;
         case "sanitizer": 
-            empty(currSpot, choice);
+            sanitizer(currSpot, choice);
             break;
-        case "icons": 
-            empty(currSpot, choice);
+        case "orthodox": 
+            orthodox(currSpot, choice);
             break;
         case "clean": 
-            empty(currSpot, choice);
+            clean(currSpot, choice);
             break;
         case "pasta": 
             empty(currSpot, choice);
@@ -208,6 +222,367 @@ function answer(choice) {
             empty(currSpot, choice);
             break;
     
+    }
+}
+
+function face(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        threeAnswers("Руки чистые?", "Мыты с мылом", "Обработаны санитайзером", "Нет");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Трогай сколько угодно");
+                break;
+            case 3: 
+                result(screenQuiz, "Лучше потерпи");
+                break;
+            case 5: 
+                result(screenQuiz, "Ну так помой сначала");
+                break;
+        }
+    }
+}
+
+function lend(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        threeAnswers("Деньги не последние?", "Последние", "Нет, но не лишние", "Нет");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                threeAnswers("Прям вот совсем?", "Совсем", "Совсем-совсем", "Нет");
+                break;
+            case 3: 
+                result(screenQuiz, "А лишних и не бывает. Займи");
+                break;
+            case 5: 
+                result(screenQuiz, "Выручи человека, не жадничай");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "У всех так. Помоги чем-то еще");
+                break;
+            case 3: 
+                result(screenQuiz, "Ну что ж. Поддержи тогда морально");
+                break;
+            case 5: 
+                result(screenQuiz, "Выручи человека, не жадничай");
+                break;
+        }
+    }
+}
+
+function borrow(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        threeAnswers("Совсем денег нет?", "Ага", "Есть, но не лишние", "Пока есть");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                threeAnswers("Прям вот совсем?", "Совсем", "Совсем-совсем", "Нет");
+                break;
+            case 3: 
+                result(screenQuiz, "А лишних и не бывает. Прорвешься");
+                break;
+            case 5: 
+                result(screenQuiz, "Не паникуй и учись экономить");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Одолжи у друзей");
+                break;
+            case 3: 
+                result(screenQuiz, "Ну что ж. Только не трать все сразу");
+                break;
+            case 5: 
+                result(screenQuiz, "Потерпи, прорвемся");
+                break;
+        }
+    }
+}
+
+function buckwheat(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        twoAnswers("Кончилась гречка?", "Да", "Пока есть");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                twoAnswers("И рис кончился?", "Да", "Пока есть");
+                break;
+            case 5: 
+                result(screenQuiz, "Так доешь сначала");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                twoAnswers("И картоха?", "Да", "Пока есть");
+                break;
+            case 5: 
+                result(screenQuiz, "Рис доешь сначала");
+                break;
+        }
+    }
+    else if (questionNumber===3) {
+        switch(choice) {
+            case 1: 
+                twoAnswers("И даже макароны?", "Да", "Пока есть");
+                break;
+            case 5: 
+                result(screenQuiz, "Доешь картошку сначала");
+                break;
+        }
+    }
+    else if (questionNumber===4) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Так и быть, покупай");
+                break;
+            case 5: 
+                result(screenQuiz, "Как макароны доешь, приходи");
+                break;
+        }
+    }
+}
+
+function mask(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        twoAnswers("Ты для себя?", "Да", "Нет");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Шей. И еще одну в подарок");
+                break;
+            case 5: 
+                twoAnswers("А для чего?", "В подарок", "На продажу");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Норм идея");
+                break;
+            case 5: 
+                twoAnswers("Чего ты хочешь?", "Помочь", "Разбогатеть");
+                break;
+        }
+    }
+    else if (questionNumber===3) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Ладно. Только давай без бешеных наценок");
+                break;
+            case 5: 
+                result(screenQuiz, "Мда-а. Выйди и зайди нормально");
+                break;
+        }
+    }
+}
+
+function sanitizer(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        twoAnswers("А купить никак?", "Да можно", "Негде");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Лучше купить, не облажаешься с пропорциями");
+                break;
+            case 5: 
+                twoAnswers("Так ты для себя?", "Да", "Нет");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Давай, только точно по инструкции!");
+                break;
+            case 5: 
+                twoAnswers("А для чего?", "В подарок", "На продажу");
+                break;
+        }
+    }
+    else if (questionNumber===3) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Норм идея");
+                break;
+            case 5: 
+                twoAnswers("Чего ты хочешь?", "Помочь", "Разбогатеть");
+                break;
+        }
+    }
+    else if (questionNumber===4) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Ладно. Только давай без бешеных наценок");
+                break;
+            case 5: 
+                result(screenQuiz, "Мда-а. Выйди и зайди нормально");
+                break;
+        }
+    }
+}
+
+function orthodox(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        twoAnswers("Где иконы?", "В церкви", "Дома");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Не целуй. Бог простит");
+                break;
+            case 5: 
+                threeAnswers("Твои иконы самые красивые?", "Да", "Обожаю их", "Конечно");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        result(screenQuiz, "Целуй до упаду");
+    }
+}
+
+function clean(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        twoAnswers("Дома грязно?", "Ну да", "Да нет");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Приберись. Хотя никто не заставляет");
+                break;
+            case 5: 
+                threeAnswers("Когда была последняя уборка?", "Сегодня", "Вчера", "На днях");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                twoAnswers("И уже хочется снова?", "Да", "Не особо");
+                break;
+            case 3:
+                result(screenQuiz, "Подожди пару дней");
+                break;
+            case 5: 
+                result(screenQuiz, "Можно и прибраться. Но не заставляй себя");
+                break;
+        }
+    }
+    else if (questionNumber===3) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Позвони психологу, пожалуйста");
+                break;
+            case 5: 
+            result(screenQuiz, "Вот и не надо");
+                break;
+        }
+    }
+}
+
+var mental = 0;
+function doctor(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        threeAnswers("Ты болеешь?", "Да", "А вдруг!", "Нет");
+    }
+    else if (questionNumber===1 && choice===3) {
+        mental = 1;
+        threeAnswers("Ты что, ипохондрик?", "Да", "Точняк", "Именно");
+    }
+    else if (mental === 1) {
+        mental = 0;
+        result(screenQuiz, "Тогда звони психологу, врачи заняты");
+    }
+    else if (questionNumber===1 && choice===5) {
+        twoAnswers("Кто-то дома болеет?", "Да", "Нет");
+    }
+    else if ((questionNumber===2 || questionNumber===1)  && choice===1) {
+        result(screenQuiz, "Ну и чего ты ждешь? Звони");
+    }
+    else if (questionNumber===2 && choice===5) {
+        result(screenQuiz, "Ну и всё. Пойди лучше зарядку сделай");
+    }
+}
+function haircut(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        fourAnswers("Что за стрижка?", "Под ноль", "Каскад", "Андеркат", "Креативная");
+    }
+    else if(questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, maybeResults[random(maybeResults)]);
+                break;
+            case 2:
+                twoAnswers("Техника «четыре хвостика» изучена?", "Да", "Нет");
+                break;
+            case 4: 
+                result(screenQuiz, "Только не андеркат!");
+                break;
+            case 5: 
+                twoAnswers("Видеотуториалы просмотрены?", "Да", "Нет");
+                break;
+        }
+    }
+    else if(questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Ну с богом! Потом отрастут");
+                break;
+            case 5:
+                result(screenQuiz, "Зайди в «Одноклассники» изучить матчасть");
+                break;
+        }
+    }
+}
+
+function party(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        twoAnswers("Это вечеринка в Zoom?", "Да", "Нет");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                twoAnswers("Еще не надоело?", "Надоело", "Совсем нет");
+                break;
+            case 5: 
+                result(screenQuiz, "Ну потерпи чуть-чуть");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Посмотри лучше на закат");
+                break;
+            case 5: 
+                result(screenQuiz, "Давай жги");
+                break;
+        }
     }
 }
 
@@ -268,6 +643,7 @@ function cab(questionNumber, choice) {
 }
 
 function result(screen1, resTxt) {
+            icon.src = "./images/icons/" + icons[random(icons)] + ".svg";
             resultText.innerHTML = resTxt;
             screenTransition(screen1, screenRes);
 }
@@ -282,6 +658,9 @@ function startNew() {
     loadQuizzes();
 }
 function screenTransition(screen1, screen2) {
+    if (screen1 === screenMain) {
+        reload.style.opacity = "0";
+    }
     screen1.style.visibility = "hidden";
     screen1.style.opacity = "0";
     screen1.style.height = "0";
@@ -291,16 +670,15 @@ function screenTransition(screen1, screen2) {
     
     if (screen1 === screenRes) {
         resultIcon.style.opacity = "0";
+        reload.style.opacity = "1";
     }
     else if (resultIcon.style.opacity === "0") {
         resultIcon.style.opacity = "1";
-    }
+    } 
 }
-function twoAnswers(question, ans1, ans2) {
-            console.log("hi");
-            answer1.style.display = "block";
-            answer5.style.display = "block";
 
+
+function twoAnswers(question, ans1, ans2) {
             answer2.style.display = "none";
             answer3.style.display = "none";
             answer4.style.display = "none";
@@ -312,14 +690,10 @@ function twoAnswers(question, ans1, ans2) {
             answer5.innerHTML = ans2;
             quest.innerHTML = question;
             currSpot += 1;
-            console.log(currSpot);
 }
 function threeAnswers(question, ans1, ans2, ans3) {
-            console.log("inside 3answers")
-            answer1.style.display = "block";
             answer3.style.display = "block";
             arrow3.style.display = "block";
-            answer5.style.display = "block";
 
             answer2.style.display = "none";
             answer4.style.display = "none";
@@ -332,13 +706,11 @@ function threeAnswers(question, ans1, ans2, ans3) {
             quest.innerHTML = question;
             currSpot += 1;
 }
-function fourAnswers(question, ans1, ans2, ans3, ans4) {
-            answer1.style.display = "block";
+function fourAnswers(question, ans1, ans2, ans3, ans4) {      
             answer2.style.display = "block";
             arrow2.style.display = "block";
             answer4.style.display = "block";
             arrow4.style.display = "block";
-            answer5.style.display = "block";
 
             answer3.style.display = "none";
             arrow3.style.display = "none";
