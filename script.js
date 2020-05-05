@@ -596,7 +596,7 @@ function sanitizer(questionNumber, choice) {
     else if (questionNumber===1) {
         switch(choice) {
             case 1: 
-                result(screenQuiz, "Лучше купить, не облажаешься с пропорциями");
+                result(screenQuiz, "Лучше купить, не облажаешься");
                 break;
             case 5: 
                 twoAnswers("Так ты для себя?", "Да", "Нет");
