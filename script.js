@@ -98,7 +98,7 @@ var arrow3 = document.getElementsByClassName("question__arrow3")[0];
 var arrow4 = document.getElementsByClassName("question__arrow4")[0];
 var arrow5 = document.getElementsByClassName("question__arrow5")[0];
 
-var maybeResults = ["Да", 
+const maybeResults = ["Да", 
     "А давай!", 
     "Подумай об этом завтра", 
     "Ну перестань!", 
@@ -117,8 +117,13 @@ var maybeResults = ["Да",
     "Достойная затея",
     "Не-а"
 ]
-var noResults = ["Ну нет", "Уууу, Павлик Морозов!", "Тупо нет", "Покайся!", "Совсем там уже?", 
-"Лучше посмотри на воду", "По голове себе настучи"]
+const noResults = ["Ну нет", "Уууу, придумаешь тоже!", 
+"Тупо нет", "Покайся!", "Совсем там уже?", 
+"Лучше посмотри на воду", "Окстись",
+"Ни за что", "Сразу нет",
+"Это исключено", "Нет", "Никогда",
+"Зря ты это", "Ни в коем разе"
+]
 
 
 function loadQuizzes() {
@@ -143,8 +148,7 @@ function quiz(choice) {
         }
 
         if (choice==='top') {
-            // myQuiz = quizTop;
-            myQuiz = "clean";
+            myQuiz = quizTop;
             answer(1);
         }
         else if (choice==='bottom') {
@@ -201,27 +205,216 @@ function answer(choice) {
             clean(currSpot, choice);
             break;
         case "pasta": 
-            empty(currSpot, choice);
+            pasta(currSpot, choice);
             break;
         case "borscht": 
-            empty(currSpot, choice);
+            borscht(currSpot, choice);
             break;
         case "pass": 
-            empty(currSpot, choice);
+            pass(currSpot, choice);
             break;
         case "pharmacy": 
-            empty(currSpot, choice);
+            pharmacy(currSpot, choice);
             break;
         case "metro": 
-            empty(currSpot, choice);
+            metro(currSpot, choice);
             break;
         case "bbq": 
-            empty(currSpot, choice);
+            bbq(currSpot, choice);
             break;
         case "fuckit": 
-            empty(currSpot, choice);
+            fuckit(currSpot, choice);
             break;
     
+    }
+}
+
+function fuckit(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        threeAnswers("Чего ты хочешь?", "Жизнь с нуля", "Проораться", "Уволиться");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                twoAnswers("Жалеть не будешь?", "Буду, наверное", "Нет, это точно");
+                break;
+            case 3: 
+                result(screenQuiz, "Глубокий вдох. Выдох. Всё хорошо");
+                break;
+            case 5:
+                twoAnswers("Деньги останутся?", "Нет", "Останутся");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Помедитируй над этим");
+                break;
+            case 5:
+                result(screenQuiz, "Давай, жги напалмом");
+                break;
+        }
+    }
+}
+
+function bbq(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        twoAnswers("Ты на даче?", "Да", "Нет, дома");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Ладно, только в семейном кругу");
+                break;
+            case 5:
+                result(screenQuiz, "Лучше испеки хлеб");
+                break;
+        }
+    }
+}
+function metro(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        threeAnswers("Куда едем?", "На работу", "В гости", "Куда глаза глядят");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                twoAnswers("А из дома никак?", "Никак", "Просто дома надоело");
+                break;
+            case 3: 
+                result(screenQuiz, "Ну потерпи!");
+                break;
+            case 5:
+                result(screenQuiz, "Тебя можно понять. Но лучше не стоит");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Ладно, только маску надень");
+                break;
+            case 5: 
+                result(screenQuiz, "Ну потерпи!");
+                break;
+        }
+    }
+}
+
+function pharmacy(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        threeAnswers("Ты болеешь?", "Да", "А вдруг!", "Нет");
+    }
+    else if (mental === 1) {
+        mental = 0;
+        result(screenQuiz, "Лучше позвони психологу");
+    }
+    else if (questionNumber===1 && choice===3) {
+        mental = 1;
+        threeAnswers("Ты что, ипохондрик?", "Да", "Точняк", "Именно");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Закажи доставку лекарств");
+            case 5:
+                twoAnswers("Кто-то дома болеет?", "Да", "Нет");
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Закажи доставку лекарств");
+                break;
+            case 5: 
+                result(screenQuiz, "О чем вообще разговор?");
+                break;
+        }
+    }
+}
+
+function pass(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        fourAnswers("Ты куда?", "На дачу", "В магазин", "В гости", "На работу");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Давай. Прочь из города!");
+                break;
+            case 2: 
+                twoAnswers("Прям очень надо?", "Да", "Просто дома надоело");
+                break;
+            case 4: 
+                result(screenQuiz, "Ну потерпи!");
+                break;
+            case 5: 
+                twoAnswers("А из дома никак?", "Никак", "Просто дома надоело");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Ладно, только маску надень");
+                break;
+            case 5: 
+                result(screenQuiz, "Ну потерпи!");
+                break;
+        }
+    }
+}
+
+function pasta(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        threeAnswers("Как настроение?", "Игривое", "Грустное", "Ленивое");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Тогда, может, кускус?");
+                break;
+            case 3: 
+                result(screenQuiz, "Только пюрешка");
+                break;
+            case 5: 
+                result(screenQuiz, "Давай макароны, это быстро");
+                break;
+        }
+    }
+}
+
+function borscht(questionNumber, choice) {
+    if (questionNumber===0) {
+        screenTransition(screenMain, screenQuiz);
+        twoAnswers("Это жест отчаяния?", "Похоже на то", "Нет, люблю готовить");
+    }
+    else if (questionNumber===1) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Лучше съешь шоколадку");
+                break;
+            case 5: 
+                twoAnswers("А ты умеешь его варить?", "Конечно", "Пока нет");
+                break;
+        }
+    }
+    else if (questionNumber===2) {
+        switch(choice) {
+            case 1: 
+                result(screenQuiz, "Ладно, только давай без фанатизма");
+                break;
+            case 5: 
+                result(screenQuiz, "Отлично, время приключений!");
+                break;
+        }
     }
 }
 
@@ -586,10 +779,10 @@ function party(questionNumber, choice) {
     }
 }
 
-function empty(questionNumber, choice) {
-    console.log("hi");
-    result(screenMain, "Тут пока нет теста");
-}
+// function empty(questionNumber, choice) {
+//     console.log("hi");
+//     result(screenMain, "Тут пока нет теста");
+// }
 
 
 function delivery(questionNumber, choice) {
