@@ -78,6 +78,7 @@ var buttonRight = document.getElementsByClassName("button button_position_right"
 var buttonBottom = document.getElementsByClassName("button button_position_bottom")[0];
 var quest = document.getElementsByClassName("question__text")[0];
 var icon = document.getElementsByClassName("result__icon")[0];
+var circle = document.getElementsByClassName("compass__arrow")[0];
 
 var screenMain = document.getElementsByClassName("main")[0];
 var introText = document.getElementsByClassName("main__text")[0];
@@ -101,7 +102,7 @@ var arrow5 = document.getElementsByClassName("question__arrow5")[0];
 const maybeResults = ["Да", 
     "А давай!", 
     "Подумай об этом завтра", 
-    "Ну перестань!", 
+    "Да брось!", 
     "Конечно",   
     "О нет! Только не это", 
     "Этого хотелось бы избежать", 
@@ -127,6 +128,7 @@ const noResults = ["Ну нет", "Уууу, придумаешь тоже!",
 
 
 function loadQuizzes() {
+    circle.style.webkitAnimationPlayState = "running";
     var quiz1 = random(Object.keys(quizzes));
     quizTop = Object.keys(quizzes)[quiz1];
     buttonTop.innerHTML = Object.values(quizzes)[quiz1];
@@ -286,7 +288,7 @@ function metro(questionNumber, choice) {
                 twoAnswers("А из дома никак?", "Никак", "Просто дома надоело");
                 break;
             case 3: 
-                result(screenQuiz, "Ну потерпи!");
+                result(screenQuiz, "Потерпи!");
                 break;
             case 5:
                 result(screenQuiz, "Тебя можно понять. Но лучше не стоит");
@@ -299,7 +301,7 @@ function metro(questionNumber, choice) {
                 result(screenQuiz, "Ладно, только маску надень");
                 break;
             case 5: 
-                result(screenQuiz, "Ну потерпи!");
+                result(screenQuiz, "Потерпи!");
                 break;
         }
     }
@@ -352,7 +354,7 @@ function pass(questionNumber, choice) {
                 twoAnswers("Прям очень надо?", "Да", "Просто дома надоело");
                 break;
             case 4: 
-                result(screenQuiz, "Ну потерпи!");
+                result(screenQuiz, "Потерпи!");
                 break;
             case 5: 
                 twoAnswers("А из дома никак?", "Никак", "Просто дома надоело");
@@ -365,7 +367,7 @@ function pass(questionNumber, choice) {
                 result(screenQuiz, "Ладно, только маску надень");
                 break;
             case 5: 
-                result(screenQuiz, "Ну потерпи!");
+                result(screenQuiz, "Потерпи!");
                 break;
         }
     }
@@ -432,7 +434,7 @@ function face(questionNumber, choice) {
                 result(screenQuiz, "Лучше потерпи");
                 break;
             case 5: 
-                result(screenQuiz, "Ну так помой сначала");
+                result(screenQuiz, "Вот и помой сначала");
                 break;
         }
     }
@@ -449,7 +451,7 @@ function lend(questionNumber, choice) {
                 threeAnswers("Прям вот совсем?", "Совсем", "Совсем-совсем", "Нет");
                 break;
             case 3: 
-                result(screenQuiz, "А лишних и не бывает. Займи");
+                result(screenQuiz, "А лишних и не бывает. Одолжи");
                 break;
             case 5: 
                 result(screenQuiz, "Выручи человека, не жадничай");
@@ -495,7 +497,7 @@ function borrow(questionNumber, choice) {
                 result(screenQuiz, "Одолжи у друзей");
                 break;
             case 3: 
-                result(screenQuiz, "Ну что ж. Только не трать все сразу");
+                result(screenQuiz, "Ладно. Только не трать все сразу");
                 break;
             case 5: 
                 result(screenQuiz, "Потерпи, прорвемся");
@@ -515,7 +517,7 @@ function buckwheat(questionNumber, choice) {
                 twoAnswers("И рис кончился?", "Да", "Пока есть");
                 break;
             case 5: 
-                result(screenQuiz, "Так доешь сначала");
+                result(screenQuiz, "Вот доешь сначала");
                 break;
         }
     }
@@ -599,7 +601,7 @@ function sanitizer(questionNumber, choice) {
                 result(screenQuiz, "Лучше купить, не облажаешься");
                 break;
             case 5: 
-                twoAnswers("Так ты для себя?", "Да", "Нет");
+                twoAnswers("Ты для себя?", "Да", "Нет");
                 break;
         }
     }
@@ -658,7 +660,7 @@ function orthodox(questionNumber, choice) {
 function clean(questionNumber, choice) {
     if (questionNumber===0) {
         screenTransition(screenMain, screenQuiz);
-        twoAnswers("Дома грязно?", "Ну да", "Да нет");
+        twoAnswers("Дома грязно?", "Да", "Не особо");
     }
     else if (questionNumber===1) {
         switch(choice) {
@@ -689,7 +691,7 @@ function clean(questionNumber, choice) {
                 result(screenQuiz, "Позвони психологу, пожалуйста");
                 break;
             case 5: 
-            result(screenQuiz, "Вот и не надо");
+            result(screenQuiz, "Значит не надо");
                 break;
         }
     }
@@ -713,10 +715,10 @@ function doctor(questionNumber, choice) {
         twoAnswers("Кто-то дома болеет?", "Да", "Нет");
     }
     else if ((questionNumber===2 || questionNumber===1)  && choice===1) {
-        result(screenQuiz, "Ну и чего ты ждешь? Звони");
+        result(screenQuiz, "И чего ты ждешь? Звони");
     }
     else if (questionNumber===2 && choice===5) {
-        result(screenQuiz, "Ну и всё. Пойди лучше зарядку сделай");
+        result(screenQuiz, "Пойди лучше зарядку сделай");
     }
 }
 function haircut(questionNumber, choice) {
@@ -743,7 +745,7 @@ function haircut(questionNumber, choice) {
     else if(questionNumber===2) {
         switch(choice) {
             case 1: 
-                result(screenQuiz, "Ну с богом! Потом отрастут");
+                result(screenQuiz, "С богом! Потом отрастут");
                 break;
             case 5:
                 result(screenQuiz, "Зайди в «Одноклассники» изучить матчасть");
@@ -763,7 +765,7 @@ function party(questionNumber, choice) {
                 twoAnswers("Еще не надоело?", "Надоело", "Совсем нет");
                 break;
             case 5: 
-                result(screenQuiz, "Ну потерпи чуть-чуть");
+                result(screenQuiz, "Потерпи чуть-чуть");
                 break;
         }
     }
@@ -853,12 +855,15 @@ function startNew() {
 function screenTransition(screen1, screen2) {
     if (screen1 === screenMain) {
         reload.style.opacity = "0";
+        circle.style.webkitAnimationPlayState = "paused";
     }
     screen1.style.visibility = "hidden";
     screen1.style.opacity = "0";
     screen1.style.height = "0";
+    screen1.style.width = "0";
     screen2.style.visibility = "visible";
     screen2.style.height = "100vh";
+    screen2.style.width = "100vw";
     screen2.style.opacity = "1";
     
     if (screen1 === screenRes) {

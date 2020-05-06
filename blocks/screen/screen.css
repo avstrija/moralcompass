@@ -1,6 +1,11 @@
 .screen {
     display: flex;
     transition: opacity .8s ease-in-out;
-    max-width: 2000px;
     align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* padding: 5%; */
 }

@@ -1,0 +1,19 @@
+@keyframes circle {
+    10% {
+        transform: rotate(-40deg);
+    }
+
+    75% {
+        transform: rotate(-400deg);
+    }
+    100% {
+        transform: rotate(-400deg);
+    }
+}
+
+.compass__arrow {
+    width: 100%;
+    transform: rotate(-40deg);
+    animation: circle 10s ease-in-out infinite;
+    animation-play-state: paused;
+}

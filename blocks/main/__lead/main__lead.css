@@ -1,0 +1,32 @@
+.main__lead {
+    font-size: 25px;
+    line-height: 32px;
+    margin-block-start: 0;
+    margin-block-end: 32px;
+}
+
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    .main__lead {
+        text-align: justify;
+        font-size: 18px;
+        line-height: 1.2;
+    }
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) 
+    {
+    .main__lead {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .main__lead {
+        font-size: 14px;
+        line-height: 1.2;
+        margin-block-end: 16px;
+        text-align: justify;
+        margin-bottom: 10%;
+    }
+}

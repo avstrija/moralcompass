@@ -1,147 +1,19 @@
-@keyframes circle {
-    10% {
-        transform: rotate(-40deg);
-    }
-
-    100% {
-        transform: rotate(-400deg);
-    }
-}
+@import url('./__text/main__text.css');
+@import url('./__lead/main__lead.css');
+@import url('./__question/main__question.css');
+@import url('./__left-arrow/main__left-arrow.css');
+@import url('./__reload/main__reload.css');
+@import url('./__wrapper/main__wrapper.css');
 
 .main {
-    justify-content: space-between;
-}
-
-@media screen and (max-width: 1150px) {
-    .main {
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 920px) {
-    .main {
-        flex-direction: column-reverse;
-        justify-content: flex-start;
-        align-items: center;
-    }
-}
-
-.main__text {
-    margin: 5%;
-    width: 30vw;
-}
-
-@media screen and (max-width: 920px) {
-    .main__text {
-        display: flex;
-        flex-direction: column-reverse;
-        margin: auto;
-        width: 90vw;
-    }
-}
-
-.main__lead {
-    font-size: 25px;
-    line-height: 32px;
-    margin-block-start: 0;
-    margin-block-end: 32px;
-}
-
-@media screen and (max-width: 1024px) {
-    .main__lead {
-        font-size: 14px;
-        line-height: 1.2;
-        margin-block-end: 16px;
-        text-align: justify;
-        margin-bottom: 10%;
-    }
-}
-
-.main__question {
-    font-family: 'Poiret One', cursive;
-    font-weight: normal;
-    font-size: 54px;
-    line-height: 37px;
-    text-transform: lowercase;
-    margin: 0;
-}
-
-@media screen and (max-width: 1024px) {
-    .main__question {
-        font-size: 48px;
-        line-height: 1;
-        margin-bottom: 32px;
-    }
-}
-
-@media screen and (max-width: 425px) {
-    .main__question {
-        font-size: 32px;
-        line-height: 1;
-        margin-bottom: 16px;
-    }
-}
-
-.main__left-arrow {
-    margin-top: 8px;
-    width: 95%;
-}
-
-@media screen and (max-width: 920px) {
-    .main__left-arrow {
-        display: none;
-    }
-}
-
-.main__reload {
-    width: 150px;
-    height: 150px;
-    outline: none;
-    display: flex;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    background-color: #1C1C1C;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 1.2;
-    text-align: center;
-    color: #F4F4F4;
-    border-width: 0;
-    margin-top: 0;
-    border-radius: 50%;
-    background-image: url('../../images/circle-arrow-small.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition: all .1s linear;
 }
 
-.main__reload:hover {
-    transform: scale(1.03);
-}
-
-@media screen and (max-width: 425px) {
-    .main__reload {
-        width: 120px;
-        height: 120px;
-    }
-}
-
-.main__wrapper {
-    position: absolute;
-    bottom: -50px;
-    right: -50px;
-    z-index: 3;
-}
-
-@media (max-width: 425px) {
-    .main__wrapper {
-        bottom: -40vh;
-        right: 0;
-    }
-}
-
-@media (max-height: 690px) {
-    .main__wrapper {
-        display: none;
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    .main {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
     }
 }

@@ -1,0 +1,18 @@
+.main__wrapper {
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    z-index: 3;
+}
+
+@media (max-width: 425px) {
+    .main__wrapper {
+        right: 0;
+    }
+}
+
+@media (max-height: 690px) {
+    .main__wrapper {
+        display: none;
+    }
+}

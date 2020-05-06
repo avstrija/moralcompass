@@ -2,12 +2,14 @@
 <html lang="ru"> 
 <head> 
     <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>Компас карантина</title> 
     <link rel="stylesheet" href="pages/index.css">
 </head> 
-<body onload="loadQuizzes();">
-    <main class="content">
+<body class="content" onload="loadQuizzes();">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
+    <main>
         <section class="screen main">
                 <div class="main__text">
                     <p class="main__lead">Приятная сторона карантина — не нужно почти ничего решать. 
@@ -67,14 +69,20 @@
         </section>
         <section class="screen result">
             <div class="result__icon-container">
-                <img src="images/heart-icon.svg" alt="icon" class="result__icon">
+                <img src="" alt="icon" class="result__icon">
             </div>
             <h2 class="result__text"></h2>
-            <button class="result__startover" onclick="startNew();">Выбрать другую дилемму
-                <img src="images/result-arrow.svg" alt="arrow" class="result__arrow">
-            </button>
+            <div class="result__wrapper">
+                <button class="result__startover" onclick="startNew();">Выбрать другую дилемму
+                </button>
+            </div>
         </section>
     </main>
+    <footer class="footer">
+        <p class="footer__copyright">DAME Studio</p>
+        <a href="https://t.me/da_bo" class="contact">Предложи свою дилемму</a>
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Favstrija.github.io/moralcompass/" class="fb-xfbml-parse-ignore">Share</a>
+    </footer>
     <script src="./script.js">
     </script>
 </body>

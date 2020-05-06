@@ -1,0 +1,28 @@
+.main__text {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    max-height: 90vh;
+}
+
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    .main__text {
+        flex-direction: column-reverse;
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .main__text {
+        max-height: 80vh;
+        max-width: 25vw;
+    }
+}
+
+
+@media screen and (max-width: 920px) {
+    .main__text {
+        width: 90vw;
+    }
+    
+}

@@ -1,0 +1,16 @@
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5vh;
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    padding: 0 2%;
+    justify-content: space-between;
+}
+
+.footer__social-link {
+    text-decoration: none;
+    color: white;
+}

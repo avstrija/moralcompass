@@ -1,0 +1,33 @@
+.main__reload {
+    width: 150px;
+    height: 150px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1C1C1C;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+    color: #F4F4F4;
+    border-width: 0;
+    margin-top: 0;
+    border-radius: 50%;
+    background-image: url('../../../images/circle-arrow-small.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all .1s linear;
+}
+
+.main__reload:hover {
+    transform: scale(1.03);
+}
+
+@media screen and (max-width: 425px) {
+    .main__reload {
+        width: 100px;
+        height: 100px;
+        font-size: 12px;
+    }
+}
