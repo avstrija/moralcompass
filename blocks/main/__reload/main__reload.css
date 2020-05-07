@@ -22,6 +22,7 @@
 
 .main__reload:hover {
     transform: scale(1.03);
+    cursor: pointer;
 }
 
 @media screen and (max-width: 425px) {
