@@ -1,0 +1,14 @@
+.result__text {
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 1.2;
+    text-align: center;
+    max-width: 50vw;
+    margin: 0 0 14vh 0;
+}
+
+@media screen and (max-width: 425px) {
+    .result__text {
+        max-width: 90vw;
+    }
+}

@@ -1,0 +1,10 @@
+.question__answer4 {
+    grid-row: 4;
+    grid-column: 5;
+}
+
+@media screen and (max-width: 425px) {
+    .question__answer4 {
+        grid-row: 5;
+    }
+}

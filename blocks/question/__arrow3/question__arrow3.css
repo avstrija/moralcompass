@@ -1,0 +1,5 @@
+.question__arrow3 {
+    margin: auto;
+    grid-row: 3/6;
+    grid-column: 4;
+}

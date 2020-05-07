@@ -1,0 +1,41 @@
+@keyframes vibrate {
+    10% {
+        transform: rotate(7deg);
+    }
+
+    20% {
+        transform: rotate(-12deg);
+    }
+
+    35% {
+        transform: rotate(2deg);
+    }
+
+    37% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(0deg);
+    }
+    85% {
+        transform: rotate(-6deg);
+    }
+
+    95% {
+        transform: rotate(0deg);
+    }
+}
+
+
+.question__star {
+    background-image: url('../../../images/question-star.svg');
+    height: 134px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: calc(51px - 45px);
+    grid-row: 1;
+    grid-column: 2/7;
+    animation: vibrate 8s ease-in-out infinite;
+}

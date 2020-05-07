@@ -1,0 +1,11 @@
+.question__pic-responsive2{
+    content: url('../../../images/arrow-short.svg');
+}
+
+
+
+@media screen and (max-width: 425px) {
+    .question__pic-responsive2 {
+        content: url('../../../images/arrow-medium.svg');
+    }
+}

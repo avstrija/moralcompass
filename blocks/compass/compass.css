@@ -2,6 +2,7 @@
 @import url('./__overlay/compass__overlay.css');
 @import url('./__column/compass__column.css');
 @import url('./__column/_position/compass__column_position_central.css');
+@import url('./__central-circle/compass__central-circle.css');
 
 .compass {
     position: relative;
@@ -26,20 +27,3 @@
 
 
 
-.compass__central-circle {
-    width: 100%;
-    padding-bottom: 100%;
-    background-color: #971B1B;
-    border-radius: 50%;
-    background-image: url('../../images/central-star.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-
-
-@media screen and (max-width: 425px) {
-    .compass__central-circle {
-        background-size: 80%;
-    }
-}

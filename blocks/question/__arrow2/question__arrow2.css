@@ -1,0 +1,12 @@
+.question__arrow2 {
+    margin: auto;
+    grid-row: 3;
+    grid-column: 3;
+}
+
+@media screen and (max-width: 425px) {
+    .question__arrow2 {
+        grid-row: 3/ span 2;
+        grid-column: 3;
+    }
+}

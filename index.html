@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="pages/index.css">
 </head> 
 <body class="content" onload="loadQuizzes();">
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
     <main>
         <section class="screen main">
                 <div class="main__text">
@@ -78,11 +76,22 @@
             </div>
         </section>
     </main>
-    <!-- <footer class="footer">
-        <p class="footer__copyright">DAME Studio</p>
-        <a href="https://t.me/da_bo" class="contact">Предложи свою дилемму</a>
-        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Favstrija.github.io/moralcompass/" class="fb-xfbml-parse-ignore">Share</a>
-    </footer> -->
+    <footer class="footer">
+        <ul class="footer__social">
+            <!-- <li><a href="https://t.me/da_bo" target="_blank" class="footer__social-link">Предложи свою дилемму</a></li> -->
+            <li>
+                <a target="_blank" href="https://vk.com/share.php?url=https%3A%2F%2Favstrija.github.io/moralcompass/" class="footer__social-link">
+                    <img src="./images/vk-share.svg" alt="VK Share">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Favstrija.github.io/moralcompass/" class="footer__social-link">
+                    <img src="./images/fb-icon.svg" alt="FB Share">
+                </a>
+            </li>
+        </ul>
+        <p class="footer__copyright">© DAME Studio</p>
+    </footer>
     <script src="./script.js">
     </script>
 </body>

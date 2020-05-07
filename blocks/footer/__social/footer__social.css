@@ -1,0 +1,14 @@
+.footer__social {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    text-align: right;
+}
+
+@media screen and (max-width: 425px){ 
+    .footer__social {
+        margin: 0;
+    }
+}
